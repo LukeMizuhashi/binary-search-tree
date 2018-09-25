@@ -1,18 +1,18 @@
-const BinarySearchTree = require('../src/constructor.js');
+const BinaryTree = require('../src/constructor.js');
 const assert = require('chai').assert;
 
-describe('BinarySearchTree',() => {
+describe('BinaryTree',() => {
   it('Starts with a leaf node as root',() => {
-    const uut = new BinarySearchTree();
+    const uut = new BinaryTree();
     assert(uut.root.isLeaf(),'Root is not a leaf node');
   });
 
-  describe('BinarySearchTree.insert',() => {
+  describe('BinaryTree.insert',() => {
     it('Inserts nodes as appropriate leaves',() => {
       const errorMessage = 'Does not insert nodes in expected locations';
       let uut;
      
-      uut = new BinarySearchTree();
+      uut = new BinaryTree();
       uut.insert(0,'a');
       uut.insert(1,'b');
       uut.insert(2,'c');
@@ -29,7 +29,7 @@ describe('BinarySearchTree',() => {
       assert(uut.root.right.right.right.right.right.value === 'f',errorMessage);
       assert(uut.root.right.right.right.right.right.right.value === 'g',errorMessage);
 
-      uut = new BinarySearchTree();
+      uut = new BinaryTree();
       uut.insert(6,'g');
       uut.insert(5,'f');
       uut.insert(4,'e');
@@ -46,7 +46,7 @@ describe('BinarySearchTree',() => {
       assert(uut.root.left.left.left.left.left.value === 'b',errorMessage);
       assert(uut.root.left.left.left.left.left.left.value === 'a',errorMessage);
 
-      uut = new BinarySearchTree();
+      uut = new BinaryTree();
       uut.insert(3,'d');
       uut.insert(5,'f');
       uut.insert(6,'g');
@@ -65,7 +65,7 @@ describe('BinarySearchTree',() => {
     });
 
     it('Handles duplicates as expected',() => {
-      uut = new BinarySearchTree();
+      uut = new BinaryTree();
       uut.insert(0,'a');
       assert.throws(
         () => {
@@ -76,9 +76,9 @@ describe('BinarySearchTree',() => {
 
   });
 
-  describe('BinarySearchTree.maxNode',() => {
+  describe('BinaryTree.maxNode',() => {
     it('Returns largest value node',() => {
-      const uut = new BinarySearchTree();
+      const uut = new BinaryTree();
       uut.insert(0,'a');
       uut.insert(1,'b');
       uut.insert(2,'c');
@@ -90,9 +90,9 @@ describe('BinarySearchTree',() => {
     });
   });
 
-  describe('BinarySearchTree.minNode',() => {
+  describe('BinaryTree.minNode',() => {
     it('Returns smallest value node',() => {
-      const uut = new BinarySearchTree();
+      const uut = new BinaryTree();
       uut.insert(0,'a');
       uut.insert(1,'b');
       uut.insert(2,'c');
@@ -104,9 +104,9 @@ describe('BinarySearchTree',() => {
     });
   });
 
-  describe('BinarySearchTree.maxValue',() => {
+  describe('BinaryTree.maxValue',() => {
     it('Returns largest value',() => {
-      const uut = new BinarySearchTree();
+      const uut = new BinaryTree();
       uut.insert(0,'a');
       uut.insert(1,'b');
       uut.insert(2,'c');
@@ -118,9 +118,9 @@ describe('BinarySearchTree',() => {
     });
   });
 
-  describe('BinarySearchTree.minValue',() => {
+  describe('BinaryTree.minValue',() => {
     it('Returns smallest value',() => {
-      const uut = new BinarySearchTree();
+      const uut = new BinaryTree();
       uut.insert(0,'a');
       uut.insert(1,'b');
       uut.insert(2,'c');

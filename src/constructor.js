@@ -1,4 +1,4 @@
-module.exports = class BinarySearchTree {
+module.exports = class BinaryTree {
   constructor(options) {
     options = options ||{};
 
