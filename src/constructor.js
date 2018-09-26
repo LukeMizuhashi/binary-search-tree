@@ -24,7 +24,22 @@ module.exports = class BinarySearchTree {
 
   }
 
-  remove() {
+  remove(key) {
+    const thisNode = this.search(key);
+    if (thisNode.isLeaf()) {
+      throw new Error(`${key} not found in tree`);
+    }
+
+    let replacementNode;
+    if (thisNode.left) {
+      replacementNode = new BinarySearchTree(thisNode.left).maxNode;
+    } else if (thisNode.right) {
+      replacementNode = new BinarySearchTree(thisNode.right).minNode;
+    } else {
+      replacementNode = new BinaryNode();
+    }
+    thisNode.replaceWith(replacementNode);
+    replacementNode.destroy();
   }
 
   get maxNode() {
@@ -65,5 +80,44 @@ module.exports = class BinarySearchTree {
     }
     return currentNode;
   }
+
+  [Symbol.iterator]() {
+
+    let thisNode = this.minNode; 
+    let maxNode = this.maxNode;
+    let visited = new Set();
+
+    return {
+      next: () => {
+        let result = {
+          value: {
+            key: thisNode.key,
+            value: thisNode.value,
+          },
+          done: thisNode === maxNode,
+        };
+        visited.add(thisNode.key);
+
+        let nextNode;
+        if (!thisNode.left.isLeaf() && !visited.has(thisNode.left.key)) {
+          nextNode = new BinarySearchTree(thisNode.left).minNode;
+        } else if (!thisNode.right.isLeaf() && !visited.has(thisNode.right.key)) {
+          nextNode = new BinarySearchTree(thisNode.right).minNode;
+        } else if (thisNode.parent && !thisNode.parent.isLeaf()) {
+          if (!visited.has(thisNode.parent.key)) {
+            nextNode = thisNode.parent;
+          } else if (thisNode !== maxNode) {
+            nextNode = thisNode.parent.parent;
+          } else {
+            nextNode = thisNode;
+          }
+        }
+        thisNode = nextNode;
+
+        return result; 
+      },
+    };
+  }
+
 };
 

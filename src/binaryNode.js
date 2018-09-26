@@ -22,6 +22,54 @@ module.exports = class BinaryNode {
     return this.value === null;
   }
 
+  destroy() {
+    if (this.isLeaf()) {
+      throw new Error(
+        'Called BinaryNode.destroy on a leaf node. Leaf nodes can only be '
+      + 'converted to non-leaf nodes by setting their value via calling '
+      + 'BinaryNode.set'
+      );
+    }
+
+    if (this.left) {
+      this.left.parent = new BinaryNode({
+        copmarator: this.compare,
+        allowsDuplicates: this.allowsDuplicates,
+      });
+    }
+
+    if (this.right) {
+      this.left.parent = new BinaryNode({
+        copmarator: this.compare,
+        allowsDuplicates: this.allowsDuplicates,
+      });
+    }
+
+    if (this.parent) {
+      const leafNode = new BinaryNode({
+        copmarator: this.compare,
+        allowsDuplicates: this.allowsDuplicates,
+      });
+      if (this.parent.left === this) {
+        this.parent.left = leafNode;
+      } else {
+        this.parent.right = leafNode;
+      }
+    }
+
+    delete this;
+  }
+
+  replaceWith(replacementNode) {
+    const left = this.left;
+    const right = this.right;
+    Object.keys(replacementNode).forEach((key) => {
+      this[key] = replacementNode[key];
+    });
+    this.left = left;
+    this.right = right;
+  }
+
   set(...args) {
 
     let key = undefined;
@@ -84,5 +132,6 @@ module.exports = class BinaryNode {
       );
     }
   }
+
 };
 

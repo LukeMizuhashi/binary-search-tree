@@ -19,6 +19,14 @@ module.exports = () => {
     assert.strictEqual(uut.search(5).key,5);
     assert.strictEqual(uut.search(6).key,6);
 
+    assert.strictEqual(uut.search(0).isLeaf(),false);
+    assert.strictEqual(uut.search(1).isLeaf(),false);
+    assert.strictEqual(uut.search(2).isLeaf(),false);
+    assert.strictEqual(uut.search(3).isLeaf(),false);
+    assert.strictEqual(uut.search(4).isLeaf(),false);
+    assert.strictEqual(uut.search(5).isLeaf(),false);
+    assert.strictEqual(uut.search(6).isLeaf(),false);
+
     assert.strictEqual(uut.search(-1).isLeaf(),true);
     assert.strictEqual(uut.search(0.5).isLeaf(),true);
     assert.strictEqual(uut.search(1.5).isLeaf(),true);
