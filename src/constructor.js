@@ -2,7 +2,7 @@ const BinaryNode = require('binary-node');
 
 module.exports = class BinarySearchTree {
   constructor(options) {
-    if (options instanceof BinaryNode) {
+    if (options instanceof this.NodeClass) {
       this.root = options;
     } else {
       this.root = this.nodeFactory(options);
