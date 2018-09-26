@@ -25,7 +25,7 @@ module.exports = class BinarySearchTree {
         throw new Error(`Key ${key} already exists in tree`);
       }
     }
-
+    return insertionLocation;
   }
 
   remove(key) {
