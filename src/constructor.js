@@ -59,11 +59,19 @@ module.exports = class BinarySearchTree {
   }
 
   get maxValue() {
-    return this.maxNode.value;
+    let result = this.maxNode;
+    if (result) {
+      result = result.value;
+    }
+    return result;
   }
 
   get minValue() {
-    return this.minNode.value;
+    let result = this.minNode;
+    if (result) {
+      result = result.value;
+    }
+    return result;
   }
 
   search(key) {
