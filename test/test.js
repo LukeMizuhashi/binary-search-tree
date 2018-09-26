@@ -1,5 +1,5 @@
 global.BinarySearchTree = require('../src/constructor.js');
-global.BinaryNode = require('../src/binaryNode.js');
+global.BinaryNode = require('binary-node');
 global.assert = require('chai').assert;
 
 const describeConstructor = require('./constructor/description.js');

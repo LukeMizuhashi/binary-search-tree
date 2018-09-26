@@ -1,4 +1,4 @@
-const BinaryNode = require('./binaryNode.js');
+const BinaryNode = require('binary-node');
 
 module.exports = class BinarySearchTree {
   constructor(options) {

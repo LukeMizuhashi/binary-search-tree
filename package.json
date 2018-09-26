@@ -22,5 +22,8 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "binary-node": "git+ssh://git@github.com/LukeMizuhashi/binary-node.git"
   }
 }
