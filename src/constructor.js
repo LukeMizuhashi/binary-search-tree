@@ -6,7 +6,7 @@ module.exports = class BinaryTree {
         options.allowsDuplicates : false;
 
     this.root = new BinaryNode({
-      allowDuplicates: options.allowDuplicates,
+      allowsDuplicates: options.allowsDuplicates,
     });
   }
 
@@ -15,7 +15,6 @@ module.exports = class BinaryTree {
 
     if (insertionLocation.isLeaf()) {
       insertionLocation.set(key,value);
-
     } else {
       if (insertionLocation.allowsDuplicates) {
         insertionLocation.set(value);
@@ -115,9 +114,13 @@ class BinaryNode {
     }
 
     if (this.isLeaf()) {
-      this.left= new BinaryNode();
+      this.left= new BinaryNode({
+        allowsDuplicates: this.allowsDuplicates,
+      });
       this.left.parent = this;
-      this.right = new BinaryNode();
+      this.right = new BinaryNode({
+        allowsDuplicates: this.allowsDuplicates,
+      });
       this.right.parent = this;
       if (this.allowsDuplicates) {
         this.value = [];
