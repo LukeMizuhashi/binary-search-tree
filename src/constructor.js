@@ -1,13 +1,12 @@
+const BinaryNode = require('./binaryNode.js');
+
 module.exports = class BinaryTree {
   constructor(options) {
-    options = options ||{};
-
-    options.allowsDuplicates = options.hasOwnProperty('allowsDuplicates') ?
-        options.allowsDuplicates : false;
-
-    this.root = new BinaryNode({
-      allowsDuplicates: options.allowsDuplicates,
-    });
+    if (options instanceof BinaryNode) {
+      this.root = options;
+    } else {
+      this.root = new BinaryNode(options);
+    }
   }
 
   insert(key,value) {
@@ -67,86 +66,4 @@ module.exports = class BinaryTree {
     return currentNode;
   }
 };
-
-class BinaryNode {
-  constructor(options) {
-    options = options || {};
-
-    this.allowsDuplicates = options.hasOwnProperty('allowsDuplicates') ?
-        options.allowsDuplicates : false;
-
-    this.key = options.key; // Defaults to undefined
-    this.value = options.value || null;
-
-    this.left = options.left || null;
-    this.right = options.right|| null;
-    this.parent = options.parent || null;
-
-    this.compare = options.comparator || this.compare;
-  }
-
-  isLeaf() {
-    return this.value === null;
-  }
-
-  set(...args) {
-
-    let key = undefined;
-    let value = undefined;
-    if (args.length == 1) {
-      key = null;
-      value = args[0];
-    } else if (args.length == 2) {
-      key = args[0];
-      value = args[1];
-    } else {
-      throw new Error(
-        'BinaryNode.set must be called as either BinaryNode.set(value) or '
-      + 'BinaryNode.set(key,value)'
-      );
-    }
-
-    if (key !== undefined && key !== null) {
-      if (!this.isLeaf()) {
-        throw new Error('Can not set key of non-leaf BinaryNode.');
-      }
-      this.key = key;
-    }
-
-    if (this.isLeaf()) {
-      this.left= new BinaryNode({
-        allowsDuplicates: this.allowsDuplicates,
-      });
-      this.left.parent = this;
-      this.right = new BinaryNode({
-        allowsDuplicates: this.allowsDuplicates,
-      });
-      this.right.parent = this;
-      if (this.allowsDuplicates) {
-        this.value = [];
-      }
-    }
-
-    if (this.allowsDuplicates) {
-      this.value.push(value);
-    } else {
-      this.value = value;
-    }
-  }
-
-  compare(key) {
-    if (key < this.key) {
-      return -1;
-    } else if (key == this.key) {
-      return 0;
-    } else if (key > this.key) {
-      return 1;
-    } else {
-      throw new Error(
-        `${key} is neither less than, greater than, nor equal to ${this.key}`
-      );
-    }
-  }
-
-}
 
