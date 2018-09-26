@@ -10,6 +10,7 @@ const describeMaxValue = require('./maxValue/description.js');
 const describeMinValue = require('./minValue/description.js');
 const describeRemove = require('./remove/description.js');
 const describeIterator = require('./iterator/description.js');
+const describeIsValid = require('./isValid/description.js');
 
 describe('BinarySearchTree',() => {
 
@@ -21,5 +22,6 @@ describe('BinarySearchTree',() => {
   describe('BinarySearchTree.minValue',describeMinValue);
   describe('BinarySearchTree.remove',describeRemove);
   describe('BinarySearchTree.iterator',describeIterator);
+  describe('BinarySearchTree.isValid',describeIsValid);
 });
 

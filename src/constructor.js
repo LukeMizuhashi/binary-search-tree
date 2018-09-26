@@ -81,6 +81,17 @@ module.exports = class BinarySearchTree {
     return currentNode;
   }
 
+  isValid() {
+    let previousKey = undefined;
+    for (let thisNode of this) {
+      if (previousKey !== undefined && thisNode.key <= previousKey) {
+        return false;
+      }
+      previousKey = thisNode.key;
+    }
+    return true;
+  }
+
   [Symbol.iterator]() {
 
     let thisNode = this.minNode; 
