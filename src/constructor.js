@@ -1,6 +1,6 @@
 const BinaryNode = require('./binaryNode.js');
 
-module.exports = class BinaryTree {
+module.exports = class BinarySearchTree {
   constructor(options) {
     if (options instanceof BinaryNode) {
       this.root = options;

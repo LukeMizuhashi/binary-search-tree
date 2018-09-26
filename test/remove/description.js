@@ -3,7 +3,7 @@ module.exports = () => {
   //   const errorMessage = 'Does not remove nodes as expected';
   //   let uut;
  
-  //   uut = new BinaryTree();
+  //   uut = new BinarySearchTree();
   //   uut.insert(3,'d');
   //   uut.insert(5,'f');
   //   uut.insert(6,'g');

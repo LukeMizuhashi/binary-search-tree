@@ -3,7 +3,7 @@ module.exports = () => {
   let key = 0;
   let value = 'a';
 
-  uut = new BinaryTree();
+  uut = new BinarySearchTree();
   uut.insert(key,value);
   assert.throws(
     () => {
@@ -11,7 +11,7 @@ module.exports = () => {
     }
   );
 
-  uut = new BinaryTree({ allowsDuplicates: true });
+  uut = new BinarySearchTree({ allowsDuplicates: true });
   uut.insert(key,value);
   assert.doesNotThrow(
     () => {

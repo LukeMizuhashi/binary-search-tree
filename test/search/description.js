@@ -2,7 +2,7 @@ module.exports = () => {
   it('Finds nodes as expected', () => {
     let uut;
  
-    uut = new BinaryTree();
+    uut = new BinarySearchTree();
     uut.insert(3,'d');
     uut.insert(1,'b');
     uut.insert(0,'a');

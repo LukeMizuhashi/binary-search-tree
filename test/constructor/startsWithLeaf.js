@@ -1,5 +1,5 @@
 module.exports = () => {
-  const uut = new BinaryTree();
+  const uut = new BinarySearchTree();
   assert(uut.root.isLeaf(),'Root is not a leaf node');
 };
 

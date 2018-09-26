@@ -17,7 +17,7 @@ module.exports = () => {
   };
   let uut;
  
-  uut = new BinaryTree(options);
+  uut = new BinarySearchTree(options);
   uut.insert(0,'a');
   uut.insert(1,'b');
   uut.insert(2,'c');
@@ -34,7 +34,7 @@ module.exports = () => {
   assert(uut.root.left.left.left.left.left.value === 'f',errorMessage);
   assert(uut.root.left.left.left.left.left.left.value === 'g',errorMessage);
 
-  uut = new BinaryTree(options);
+  uut = new BinarySearchTree(options);
   uut.insert(6,'g');
   uut.insert(5,'f');
   uut.insert(4,'e');
@@ -51,7 +51,7 @@ module.exports = () => {
   assert(uut.root.right.right.right.right.right.value === 'b',errorMessage);
   assert(uut.root.right.right.right.right.right.right.value === 'a',errorMessage);
 
-  uut = new BinaryTree(options);
+  uut = new BinarySearchTree(options);
   uut.insert(3,'d');
   uut.insert(5,'f');
   uut.insert(6,'g');

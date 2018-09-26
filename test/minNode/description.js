@@ -1,6 +1,6 @@
 module.exports = () => {
   it('Returns smallest value node',() => {
-    const uut = new BinaryTree();
+    const uut = new BinarySearchTree();
     uut.insert(0,'a');
     uut.insert(1,'b');
     uut.insert(2,'c');

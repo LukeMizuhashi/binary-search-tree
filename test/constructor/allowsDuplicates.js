@@ -3,23 +3,23 @@ module.exports = () => {
   let expectedValue;
   
   expectedValue = false;
-  uut= new BinaryTree();
+  uut= new BinarySearchTree();
   assert.strictEqual(uut.root.allowsDuplicates,expectedValue);
 
   expectedValue = true;
-  uut= new BinaryTree({
+  uut= new BinarySearchTree({
     allowsDuplicates: expectedValue,
   });
   assert.strictEqual(uut.root.allowsDuplicates,expectedValue);
 
   expectedValue = false;
-  uut= new BinaryTree({
+  uut= new BinarySearchTree({
     allowsDuplicates: expectedValue,
   });
   assert.strictEqual(uut.root.allowsDuplicates,expectedValue);
 
   expectedValue = false;
-  uut = new BinaryTree();
+  uut = new BinarySearchTree();
   uut.insert(0,'a');
   uut.insert(1,'b');
   uut.insert(2,'c');
@@ -37,7 +37,7 @@ module.exports = () => {
   assert.strictEqual(uut.root.right.right.right.right.right.right.allowsDuplicates,expectedValue);
 
   expectedValue = true;
-  uut= new BinaryTree({
+  uut= new BinarySearchTree({
     allowsDuplicates: expectedValue,
   });
   uut.insert(0,'a');
@@ -57,7 +57,7 @@ module.exports = () => {
   assert.strictEqual(uut.root.right.right.right.right.right.right.allowsDuplicates,expectedValue);
 
   expectedValue = false;
-  uut= new BinaryTree({
+  uut= new BinarySearchTree({
     allowsDuplicates: expectedValue,
   });
   uut.insert(0,'a');
