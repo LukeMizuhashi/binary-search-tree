@@ -9,8 +9,12 @@ module.exports = class BinarySearchTree {
     }
   }
 
+  get NodeClass() {
+    return BinaryNode;
+  }
+
   nodeFactory(options) {
-    return new BinaryNode(options);
+    return new (this.NodeClass)(options);
   }
 
   insert(key,value) {
