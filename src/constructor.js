@@ -5,8 +5,12 @@ module.exports = class BinarySearchTree {
     if (options instanceof BinaryNode) {
       this.root = options;
     } else {
-      this.root = new BinaryNode(options);
+      this.root = this.nodeFactory(options);
     }
+  }
+
+  nodeFactory(options) {
+    return new BinaryNode(options);
   }
 
   insert(key,value) {
@@ -36,7 +40,7 @@ module.exports = class BinarySearchTree {
     } else if (thisNode.right) {
       replacementNode = new BinarySearchTree(thisNode.right).minNode;
     } else {
-      replacementNode = new BinaryNode();
+      replacementNode = this.nodeFactory();
     }
     thisNode.replaceWith(replacementNode);
     replacementNode.destroy();
