@@ -14,7 +14,7 @@ module.exports = class BinarySearchTree {
   }
 
   nodeFactory(options) {
-    return new (this.NodeClass)(options);
+    return new this.NodeClass(options);
   }
 
   insert(key,value) {
